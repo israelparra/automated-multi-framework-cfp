@@ -1,0 +1,78 @@
+{
+  "comment": "Configuración EXCLUSIVA para proyectos Spring Boot",
+  "framework": "spring_boot",
+  "version": "2.0",
+  "extends": "../common/common-configuration.json",
+
+  "frameworks": {
+    "spring_boot": {
+      "annotations": {
+        "rest_controller": "org.springframework.web.bind.annotation.RestController",
+        "http_mappings": [
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.DeleteMapping",
+          "org.springframework.web.bind.annotation.PatchMapping",
+          "org.springframework.web.bind.annotation.RequestMapping"
+        ],
+        "entity": [
+          "jakarta.persistence.Entity",
+          "javax.persistence.Entity",
+          "org.springframework.data.mongodb.core.mapping.Document"
+        ],
+        "repository": [
+          "org.springframework.data.repository.Repository",
+          "org.springframework.data.jpa.repository.JpaRepository",
+          "org.springframework.stereotype.Repository"
+        ],
+        "main_application": "org.springframework.boot.autoconfigure.SpringBootApplication",
+        "inject": "org.springframework.beans.factory.annotation.Autowired",
+        "transactional": "org.springframework.transaction.annotation.Transactional"
+      },
+      "infrastructure": {
+        "dependencies": [
+          "spring-cloud-starter-gateway",
+          "spring-cloud-starter-netflix-eureka-server",
+          "spring-cloud-starter-netflix-zuul",
+          "spring-cloud-config-server",
+          "spring-boot-admin-server"
+        ],
+        "annotations": [
+          "@EnableEurekaServer",
+          "@EnableConfigServer",
+          "@EnableAdminServer",
+          "@EnableHystrixDashboard",
+          "@EnableTurbine",
+          "@EnableZipkinServer"
+        ]
+      },
+      "component_scanner": {
+        "scan_annotations": []
+      }
+    }
+  },
+
+  "persistence_apis": {
+    "spring_data_repository": {
+      "repository_base": "org/springframework/data/repository/Repository",
+      "read_prefixes": ["find", "get", "read", "query", "search", "stream", "count", "exists"],
+      "write_prefixes": ["save", "delete", "remove"]
+    }
+  },
+
+  "api_fronteras": [
+    "org/springframework/web/client/RestTemplate",
+    "org/springframework/web/reactive/function/client/WebClient"
+  ],
+
+  "anotaciones_api_fronteras": [
+    "org/springframework/cloud/openfeign/FeignClient"
+  ],
+
+  "mensajeria_fronteras": [
+    "org/springframework/kafka/core/KafkaTemplate",
+    "org/springframework/amqp/rabbit/core/RabbitTemplate",
+    "org/springframework/jms/core/JmsTemplate"
+  ]
+}

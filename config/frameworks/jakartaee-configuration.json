@@ -1,0 +1,58 @@
+{
+  "comment": "Configuración EXCLUSIVA para proyectos Jakarta EE (y legacy Java EE)",
+  "framework": "jakarta_ee",
+  "version": "2.0",
+  "extends": "../common/common-configuration.json",
+
+  "frameworks": {
+    "jakarta_ee": {
+      "annotations": {
+        "rest_controller": "jakarta.ws.rs.Path",
+        "http_mappings": [
+          "jakarta.ws.rs.GET",
+          "jakarta.ws.rs.POST",
+          "jakarta.ws.rs.PUT",
+          "jakarta.ws.rs.DELETE",
+          "jakarta.ws.rs.Path",
+          "javax.ws.rs.GET",
+          "javax.ws.rs.POST",
+          "javax.ws.rs.PUT",
+          "javax.ws.rs.DELETE",
+          "javax.ws.rs.Path"
+        ],
+        "entity": [
+          "jakarta.persistence.Entity",
+          "javax.persistence.Entity"
+        ],
+        "repository": [
+          "jakarta.ejb.Stateless",
+          "jakarta.ejb.Stateful",
+          "jakarta.enterprise.context.ApplicationScoped",
+          "javax.ejb.Stateless",
+          "javax.ejb.Stateful"
+        ],
+        "main_application": "jakarta.ws.rs.ApplicationPath",
+        "inject": "jakarta.inject.Inject",
+        "transactional": "jakarta.transaction.Transactional"
+      },
+      "infrastructure": {
+        "dependencies": [],
+        "annotations": []
+      },
+      "component_scanner": {
+        "scan_annotations": []
+      }
+    }
+  },
+
+  "api_fronteras": [
+    "jakarta/ws/rs/client/Client",
+    "jakarta/ws/rs/client/WebTarget",
+    "javax/ws/rs/client/Client",
+    "javax/ws/rs/client/WebTarget"
+  ],
+
+  "anotaciones_api_fronteras": [
+    "org/eclipse/microprofile/rest/client/inject/RegisterRestClient"
+  ]
+}

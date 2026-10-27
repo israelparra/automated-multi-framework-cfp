@@ -1,0 +1,116 @@
+{
+  "comment": "Configuración COMÚN compartida por todos los frameworks",
+  "version": "2.0",
+
+  "heuristic_engine": {
+    "weights": {
+      "naming": 0.40,
+      "signature": 0.30,
+      "context": 0.20,
+      "type_analysis": 0.10
+    },
+    "thresholds": {
+      "read": 0.50,
+      "write": 0.50
+    },
+    "debug_mode": false
+  },
+
+  "persistence_apis": {
+    "jpa_entity_manager": {
+      "class_name": "jakarta/persistence/EntityManager",
+      "write_methods": ["persist", "merge", "remove", "flush"],
+      "read_methods": ["find", "getReference", "createQuery", "createNamedQuery", "createNativeQuery"]
+    },
+    "jpa_query": {
+      "class_name": "jakarta/persistence/Query",
+      "write_methods": ["executeUpdate"],
+      "read_methods": ["getResultList", "getSingleResult", "getFirstResult", "stream"]
+    },
+    "jpa_typed_query": {
+      "class_name": "jakarta/persistence/TypedQuery",
+      "write_methods": ["executeUpdate"],
+      "read_methods": ["getResultList", "getSingleResult", "getFirstResult", "stream"]
+    },
+    "javax_entity_manager": {
+      "class_name": "javax/persistence/EntityManager",
+      "write_methods": ["persist", "merge", "remove", "flush"],
+      "read_methods": ["find", "getReference", "createQuery", "createNamedQuery", "createNativeQuery"]
+    },
+    "javax_query": {
+      "class_name": "javax/persistence/Query",
+      "write_methods": ["executeUpdate"],
+      "read_methods": ["getResultList", "getSingleResult", "getFirstResult", "stream"]
+    }
+  },
+
+  "api_fronteras": [
+    "org/apache/http/client/HttpClient"
+  ],
+
+  "mensajeria_fronteras": [
+    "jakarta/jms/MessageProducer",
+    "jakarta/jms/QueueSender"
+  ],
+
+  "archivos_write_fronteras": [
+    "java/nio/file/Files.write",
+    "java/nio/file/Files.writeString",
+    "java/nio/file/Files.writeBytes",
+    "java/nio/file/Files.createFile",
+    "java/nio/file/Files.createDirectory",
+    "java/nio/file/Files.createDirectories",
+    "java/nio/file/Files.copy",
+    "java/nio/file/Files.move",
+    "java/io/FileOutputStream.write",
+    "java/io/BufferedWriter.write",
+    "java/io/FileWriter.write",
+    "java/io/RandomAccessFile.write",
+    "java/io/RandomAccessFile.writeBytes",
+    "java/io/RandomAccessFile.writeInt",
+    "java/io/RandomAccessFile.writeLong",
+    "java/io/PrintWriter.write",
+    "java/io/PrintWriter.println",
+    "java/io/PrintWriter.print",
+    "org/apache/commons/io/FileUtils.writeStringToFile",
+    "org/apache/commons/io/FileUtils.writeByteArrayToFile",
+    "org/apache/commons/io/FileUtils.copyFile",
+    "java/io/File.createNewFile"
+  ],
+
+  "archivos_read_fronteras": [
+    "java/nio/file/Files.readAllBytes",
+    "java/nio/file/Files.readAllLines",
+    "java/nio/file/Files.readString",
+    "java/nio/file/Files.lines",
+    "java/nio/file/Files.newInputStream",
+    "java/nio/file/Files.newBufferedReader",
+    "java/io/FileInputStream.read",
+    "java/io/FileInputStream.readAllBytes",
+    "java/io/BufferedReader.read",
+    "java/io/BufferedReader.readLine",
+    "java/io/RandomAccessFile.read",
+    "java/io/RandomAccessFile.readFully",
+    "java/io/RandomAccessFile.readInt",
+    "java/io/RandomAccessFile.readLong",
+    "org/apache/commons/io/FileUtils.readFileToString",
+    "org/apache/commons/io/FileUtils.readFileToByteArray",
+    "org/apache/commons/io/FileUtils.readLines"
+  ],
+
+  "nomenclatura_read_prefijos": [
+    "find", "get", "read", "search", "query", "count", "exists", "is",
+    "buscar", "obtener", "consultar", "leer", "load", "stream", "list"
+  ],
+
+  "nomenclatura_write_prefijos": [
+    "save", "delete", "remove", "persist", "merge", "update", "add", "create", "insert",
+    "guardar", "borrar", "eliminar", "actualizar", "crear", "modificar"
+  ],
+
+  "jakarta_persistence": {
+    "entity_manager": "jakarta/persistence/EntityManager",
+    "query": "jakarta/persistence/Query",
+    "typed_query": "jakarta/persistence/TypedQuery"
+  }
+}

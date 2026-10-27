@@ -1,0 +1,28 @@
+# Build (anclado a la raíz para no ignorar el paquete com/emir/analyzer/build)
+target/
+/build/
+/out/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# Claude
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
